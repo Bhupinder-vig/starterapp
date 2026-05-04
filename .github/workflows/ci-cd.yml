@@ -1,0 +1,38 @@
+name: .NET MAUI CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    # 1. Checkout code
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2. Setup .NET SDK
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    # 3. Install MAUI workload
+    - name: Install MAUI workload
+      run: dotnet workload install maui
+
+    # 4. Restore dependencies
+    - name: Restore dependencies
+      run: dotnet restore
+
+    # 5. Build solution
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    # 6. Run unit tests
+    - name: Run tests
+      run: dotnet test --configuration Release --no-build --verbosity normal
