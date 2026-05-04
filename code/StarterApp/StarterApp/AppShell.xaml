@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="StarterApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:StarterApp.Views">
+
+    <!-- TIER 1 -->
+    <ShellContent
+        Title="Items"
+        ContentTemplate="{DataTemplate views:ItemsPage}" />
+
+    <!-- TIER 2 - LOCATION -->
+    <ShellContent
+        Title="Nearby"
+        ContentTemplate="{DataTemplate views:NearbyItemsPage}" />
+
+    <!-- TIER 2 - RENTALS -->
+    <ShellContent
+        Title="Rentals"
+        ContentTemplate="{DataTemplate views:RentalsPage}" />
+
+</Shell>
